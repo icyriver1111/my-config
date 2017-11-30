@@ -1,0 +1,98 @@
+
+".source.js":
+  # const require
+  'CommonJS require':
+    'prefix': 'req'
+    'body': 'const ${1:} = require(\'${1:}\');'
+  #querySelector
+  'querySelector':
+    'prefix': 'qs'
+    'body': 'querySelector(\'${1:}\')'
+  #querySelectorAll
+  'querySelectorAll':
+    'prefix': 'qsa'
+    'body': 'querySelectorAll(\'${1:}\')'
+  #function
+  'Function':
+    'prefix': 'funj'
+    'body': 'function ${1:}($2) {\n\t$0\n};'
+  # wxml js
+  "wxml App":
+    "prefix": "App"
+    "body": """
+      App({
+        onLaunch: function() {
+          // Do something initial when launch.
+        },
+        onShow: function() {
+          // Do something when show.
+        },
+        onHide: function() {
+          // Do something when hide.
+        },
+        globalData: ''
+      })
+    """
+
+  "wxml Page":
+    "prefix": "Page"
+    "body": """
+      Page({
+        data: {},
+        onLoad: function(options) {
+          // Do some initialize when page load.
+        },
+        onReady: function() {
+          // Do something when page ready.
+        },
+        onShow: function() {
+          // Do something when page show.
+        },
+        onHide: function() {
+          // Do something when page hide.
+        },
+        onUnload: function() {
+          // Do something when page close.
+        },
+        onPullDownRefresh: function() {
+          // Do something when pull down
+          // config.window = enablePullDownRefresh
+        },
+        // Custom Event handler.
+        eventHandler: function() {},
+        pageData: ''
+      })
+    """
+
+  'wxml Request':
+    'prefix': 'wx.request'
+    'body': """
+      wx.request({
+        url: '$1',
+        data: {$2},
+        header: {
+          ${3: 'Content-Type': 'application/json'}
+        },
+        method: ${4:GET},
+        success: function(res) {$5},
+        fail: function(res) {$6},
+        complete: function(res) {$7}
+      })
+    """
+
+  'wxml UploadFile':
+    'prefix': 'wx.uploadFile'
+    'body': """
+      wx.request({
+        url: "$1",
+        filePath: "$2",
+        name: "$3",
+        header: {
+          ${4: "Content-Type": "application/json"}
+        },
+        formData: {$5}
+        success: function(res) {$6},
+        fail: function(res) {$7},
+        complete: function(res) {$8}
+      })
+    """
